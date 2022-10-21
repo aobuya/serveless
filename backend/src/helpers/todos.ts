@@ -13,11 +13,12 @@ import { APIGatewayProxyEvent } from 'aws-lambda'
 //import { APIGateway } from 'aws-sdk'
 import * as uuid from 'uuid'
 import { getUserId } from '../lambda/utils'
+import { TodoItem } from '../models/TodoItem'
 //import { getUserId } from '../utils'
 //import { createTodo } from '../../helpers/todosAcess'
 import { CreateTodoRequest } from '../requests/CreateTodoRequest'
 
-export function todoBuilder(todoRequest: CreateTodoRequest, event: APIGatewayProxyEvent)
+export function todoBuilder(todoRequest: CreateTodoRequest, event: APIGatewayProxyEvent):TodoItem
 {
     const todoID = uuid.v4()
     const todo = {
@@ -30,5 +31,5 @@ export function todoBuilder(todoRequest: CreateTodoRequest, event: APIGatewayPro
       attachmentUrl: "",
       ...todoRequest
    }
-   return todo
+   return todo as TodoItem
 }
