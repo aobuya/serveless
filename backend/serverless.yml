@@ -2,6 +2,7 @@
 org: aobuya
 app: serverless-todo-app
 service: serverless-todo-app
+framework: '3.23.0'
 
 plugins:
   - serverless-webpack
